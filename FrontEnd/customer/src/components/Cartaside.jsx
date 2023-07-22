@@ -5,8 +5,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { mediaurl } from "./mediaurl";
 
-function Cartaside(props) {
-  const [refresh, setRefresh] = useState(props.refresh);
+function Cartaside({deleteCart, ...props}) {
+  
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(startDate);
   const [totalDays, setTotalDays] = useState(1);
@@ -33,31 +33,7 @@ function Cartaside(props) {
     }
   }, [endDate, startDate]);
 
-  const deleteCart = (id) => {
-    let param = { id: id };
-    fetch("http://127.0.0.1:8000/api/deletecart", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "content-Type": "appliction/json",
-      },
-      body: JSON.stringify(param),
-    }).then((response) => {
-      response.json().then((data) => {
-        toast.error("Delete successfully!", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          className: "toast-red",
-        });
-        setRefresh((prev) => prev + 1);
-      });
-    });
-  };
+ 
 
   const addBookings = () => {
     let params = {

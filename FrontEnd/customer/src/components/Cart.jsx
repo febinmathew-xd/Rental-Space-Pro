@@ -5,6 +5,8 @@ import Address from "./Address";
 import Payment from "./Payment";
 import Cartaside from "./Cartaside";
 import EmptyCartAside from "./EmptyCartAside";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 function Cart() {
@@ -45,9 +47,36 @@ function Cart() {
 
   },[refresh]);
 
+  const deleteCart = (id) => {
+    let param = { id: id };
+    fetch("http://127.0.0.1:8000/api/deletecart", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "content-Type": "appliction/json",
+      },
+      body: JSON.stringify(param),
+    }).then((response) => {
+      response.json().then((data) => {
+        toast.error("Delete successfully!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          className: "toast-red",
+        });
+        setRefresh((prev) => prev + 1);
+      });
+    });
+  };
+
   return (
     <>
       <Header />
+      <ToastContainer/>
 
       <main className="w-full min-h-screen bg-gray-400/20 pt-12 mt-24">
         <div className="w-[1200px]  mx-auto flex justify-between">
@@ -65,7 +94,7 @@ function Cart() {
               
             </div>) : (
               <div>
-             <Cartaside obj={cart} refresh={refresh} />
+             <Cartaside obj={cart} deleteCart={deleteCart} />
             </div>
             )
           }
