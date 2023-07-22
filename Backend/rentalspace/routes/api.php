@@ -68,5 +68,6 @@ Route::post('/rejectbooking', [BookingController::class, 'rejectBooking']);
 Route::post('/getbookingsbyuserid', [BookingController::class, 'viewbookingsByUserId']);
 Route::post('/changeExpire', [BookingController::class, 'changeExpire']);
 Route::post('/addfeedback', [BookingController::class, 'addFeedback']);
+Route::get('/allfeedback', [BookingController::class, 'allFeedback']);
 
 Route::post('/registeruser', [UserController::class, 'registerUser']);

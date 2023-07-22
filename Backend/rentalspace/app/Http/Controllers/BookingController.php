@@ -48,6 +48,14 @@ class BookingController extends Controller{
 
 
    }
+
+   public function allFeedback(Request $request){
+    $result = DB::table('feedback')
+    ->join('user', 'user.loginid', 'feedback.userid')
+    ->get();
+
+    echo json_encode($result);
+   }
   
 
 public function viewbokingsByVedorId(Request $request){
