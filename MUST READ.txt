@@ -1,0 +1,1 @@
+Run 'npm install' in your terminal  inorder to install node modules. otherwise error occurs.
