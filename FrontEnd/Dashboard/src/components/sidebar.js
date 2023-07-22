@@ -1,3 +1,4 @@
+import React from "react";
 import { Link,NavLink } from "react-router-dom";
 
 function Sidebar() {
@@ -40,6 +41,9 @@ function Sidebar() {
 
               <NavLink to="/Vendor" className="nav-item nav-link ">
                 <i class="fa-solid fa-list-check"></i>Vendors
+              </NavLink>
+              <NavLink to="/feedback" className="nav-item nav-link ">
+                <i class="fa-solid fa-list-check"></i>Feedbacks
               </NavLink>
             </>
           ) : (

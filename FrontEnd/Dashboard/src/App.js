@@ -21,6 +21,9 @@ import RegisterUser from "./components/RegisterUser";
 import RegisterVendor from "./components/RegisterVendor";
 import Bookings from "./components/Bookings";
 import RecentBookings from "./components/RecentBookings";
+import ViewFeedback from "./components/ViewFeedback";
+
+
 
 
 
@@ -56,6 +59,8 @@ function App() {
             <Route exact path="/Product" element={<Product />} />
             <Route exact path="/AddProduct" element={<AddProduct />} />
             <Route exact path="/editProduct" element={<EditProduct />} />
+            <Route exact path="feedback" element={<ViewFeedback/>} />
+            
           </Routes>
         ) : usertype == 1 ? (
           <Routes>
